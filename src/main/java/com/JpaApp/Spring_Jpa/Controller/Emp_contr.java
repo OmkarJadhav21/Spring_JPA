@@ -22,19 +22,26 @@ public class Emp_contr {
     return "Data Inserted ";
     }
 
-//    @GetMapping(value = "selectOne")
+//    @GetMapping(value = "/selectOne")
 //    public Employee select(){
 //    Employee a=emp_repo.findOne(1);           //select * ....where id=1
 //    return a;
 //    }
 
-    @GetMapping(value = "selectAll")
+    @GetMapping(value = "/selectAll")
     List<Employee>select(){
         List<Employee>li=emp_repo.findAll();
         return li;
     }
-    @GetMapping(value = "selectByPath/{id}")
+
+    @GetMapping(value = "/selectByPath/{id}")
     public Employee selectByPath(@PathVariable Integer id){
+        Employee b=emp_repo.findOne(id);
+        return b;
+    }
+
+    @GetMapping(value = "/selectByParam")
+    public Employee selectByParam(@RequestParam Integer id){
         Employee b=emp_repo.findOne(id);
         return b;
     }
